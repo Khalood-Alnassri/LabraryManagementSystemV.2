@@ -65,7 +65,8 @@ namespace LabraryManagementSystemV._2
                 Console.WriteLine("4. Search Book");
                 Console.WriteLine("5. List All Available Books");
                 Console.WriteLine("6. Transfer Book");
-                Console.WriteLine("7. Exit");
+                Console.WriteLine("7. View Most Popular Books.");
+                Console.WriteLine("8. Exit");
                 Console.Write("Choose option: ");
 
 
@@ -161,7 +162,6 @@ namespace LabraryManagementSystemV._2
                                 {
 
 
-                                    DateOnly returnDate = DateOnly.FromDateTime(DateTime.Today).AddDays(10); // must return after 10 days
                                     DateOnly today = DateOnly.FromDateTime(DateTime.Today); 
                                     int FeePerDay = 10;
 
@@ -345,8 +345,42 @@ namespace LabraryManagementSystemV._2
 
                         break;
 
-
                     case 7:
+                        // View Most Popular Books
+                        
+                        int populerBook = 0;
+                        int populerBookIndex = 0;
+                        for (int i = 0; i <= lastIndex; i++)
+                        {
+                            if (populerBook < borrowCount[i])
+                            {
+                                
+                                populerBook = borrowCount[i];
+                                populerBookIndex = i;
+                            }
+                        }
+                        if ((populerBook != 0))
+                        {
+                            Console.WriteLine("Most populer book :");
+                            Console.WriteLine("Tittle :" + titles[populerBookIndex]);
+                            Console.WriteLine("ISBN :" + isbns[populerBookIndex]);
+                            Console.WriteLine("authors :" + authors[populerBookIndex]);
+                            Console.WriteLine("Category :" + bookCategory[populerBookIndex]);
+                            Console.WriteLine("Availability :" + available[populerBookIndex]);
+                            Console.WriteLine("borrow Count :" + borrowCount[populerBookIndex]);
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("No borrowed yet!");
+                        }
+
+
+
+                        break;
+
+
+                    case 8:
 
                         Console.WriteLine("Exiting program...");
                         Console.WriteLine("-----------------------------");
