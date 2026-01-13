@@ -22,7 +22,7 @@
             available[lastIndex] = true;
             borrowers[lastIndex] = "";
             bookCategory[lastIndex] = "Sciences";
-            borrowCount[lastIndex] = "3";
+            borrowCount[lastIndex] = 3;
             lastIndex++; //1
 
             titles[lastIndex] = "Algorithms";
@@ -31,7 +31,7 @@
             available[lastIndex] = true;
             borrowers[lastIndex] = "";
             bookCategory[lastIndex] = "Database";
-            borrowCount[lastIndex] = "6";
+            borrowCount[lastIndex] = 6;
 
 
             lastIndex++; //2
@@ -42,7 +42,7 @@
             available[lastIndex] = false;
             borrowers[lastIndex] = "Karim";
             bookCategory[lastIndex] = "Sciences";
-            borrowCount[lastIndex] = "2";
+            borrowCount[lastIndex] = 2;
 
 
 
@@ -94,7 +94,7 @@
 
                     case 2: //borrowing
 
-                        Console.Write("Enter ISBN or Title or book Category: ");
+                        Console.Write("Enter ISBN or Title : ");
                         string Input = Console.ReadLine();
 
              
@@ -102,7 +102,7 @@
 
                         for (int i = 0; i <= lastIndex; i++)
                         {
-                            if (titles[i] == Input || isbns[i] == Input || bookCategory[i] == Input)
+                            if (titles[i] == Input || isbns[i] == Input )
                             {
                                 //book is found in system
                                 Found = true;
@@ -113,8 +113,9 @@
                                     borrowers[i] = Console.ReadLine();
                                     available[i] = false;
                                     borrowCount[i]++;
-
+                                    DateOnly returnDate = DateOnly.FromDateTime(DateTime.Today).AddDays(10);
                                     Console.WriteLine("Book borrowed successfully");
+                                    Console.WriteLine("Return date: " + returnDate.ToShortDateString());
                                 }
                                 else
                                 {
