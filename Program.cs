@@ -10,7 +10,7 @@
             bool[] available = new bool[100];
             string[] borrowers = new string[100];
             string[] bookCategory = new string[100];
-            string[] borrowCount = new string[100];
+            int[] borrowCount = new int[100];
             string[] returndate = new string[100];
             double[] lateFees = new double[100];
 
@@ -97,26 +97,7 @@
                         Console.Write("Enter ISBN or Title or book Category: ");
                         string Input = Console.ReadLine();
 
-                        //flag = false
-                        //for()
-                        {
-
-                            //if found something
-                            //flag = true
-
-                            //do something
-
-                            //break;
-                        }
-
-                        //flag == false
-                        //print not found
-
-
-
-
-
-
+             
                         bool Found = false;
 
                         for (int i = 0; i <= lastIndex; i++)
@@ -131,6 +112,8 @@
                                     Console.Write("Borrower name: ");
                                     borrowers[i] = Console.ReadLine();
                                     available[i] = false;
+                                    borrowCount[i]++;
+
                                     Console.WriteLine("Book borrowed successfully");
                                 }
                                 else
