@@ -1,4 +1,6 @@
-﻿namespace LabraryManagementSystemV._2
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace LabraryManagementSystemV._2
 {
     internal class Program
     {
@@ -11,7 +13,7 @@
             string[] borrowers = new string[100];
             string[] bookCategory = new string[100];
             int[] borrowCount = new int[100];
-            string[] returndate = new string[100];
+            DateOnly[] returndate = new DateOnly[100];
             double[] lateFees = new double[100];
 
             int lastIndex = 0; // Initialize lastIndex to -1 since no books are added yet
@@ -43,6 +45,7 @@
             borrowers[lastIndex] = "Karim";
             bookCategory[lastIndex] = "Sciences";
             borrowCount[lastIndex] = 2;
+            
 
 
 
@@ -112,10 +115,10 @@
                                     Console.Write("Borrower name: ");
                                     borrowers[i] = Console.ReadLine();
                                     available[i] = false;
-                                    borrowCount[i]++;
-                                    DateOnly returnDate = DateOnly.FromDateTime(DateTime.Today).AddDays(10);
+                                    borrowCount[i]++; 
+                                    DateOnly returnDate = DateOnly.FromDateTime(DateTime.Today).AddDays(10); // return date
                                     Console.WriteLine("Book borrowed successfully");
-                                    Console.WriteLine("Return date: " + returnDate.ToShortDateString());
+                                    Console.WriteLine("Return date: " + returnDate.ToShortDateString()); // return date
                                 }
                                 else
                                 {
@@ -141,29 +144,48 @@
 
 
                     case 3:
+                        //Return Book
 
-
-                        Console.Write("Enter ISBN or Title or book Category: ");
+                        Console.Write("Enter ISBN or Title : ");
                         string input = Console.ReadLine();
 
                         bool found = false;
 
                         for (int i = 0; i <= lastIndex; i++)
                         {
-                            if (titles[i] == input || isbns[i] == input || bookCategory[i] == input)
+                            if (titles[i] == input || isbns[i] == input )
                             {
                                 //book is found in system
                                 found = true;
+                                if (available[i] == false)
+                                {
 
 
+                                    DateOnly returnDate = DateOnly.FromDateTime(DateTime.Today).AddDays(10); // must return after 10 days
+                                    DateOnly today = DateOnly.FromDateTime(DateTime.Today); 
+                                    int FeePerDay = 10;
 
-                                borrowers[i] = "";
-                                available[i] = true;
-                                Console.WriteLine("Book returned successfully");
+                                    if (today > returndate[i])
+                                    {
 
+                                        int lateDays = (today.DayNumber - returndate[i].DayNumber); 
+                                        lateFees[i] = lateDays * FeePerDay;
 
+                                        Console.WriteLine("Late days: " + lateDays);
+                                        Console.WriteLine("Late fee: " + lateFees[i] + " OR");
 
-                                break;
+                                    }
+                                    else
+                                    {
+                                        lateFees[i] = 0;
+                                        Console.WriteLine("Book returned on time. No late fees.");
+                                    }
+
+                                    borrowers[i] = "";
+                                    available[i] = true;
+
+                                    Console.WriteLine("Book returned successfully");
+                                }
 
 
                             }
