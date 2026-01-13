@@ -83,6 +83,9 @@
                         Console.Write("ISBN: ");
                         isbns[lastIndex] = Console.ReadLine();
 
+                        Console.Write("bookCategory: ");
+                        bookCategory[lastIndex] = Console.ReadLine();
+
                         available[lastIndex] = true;
                         borrowers[lastIndex] = "";
 
@@ -91,7 +94,7 @@
 
                     case 2: //borrowing
 
-                        Console.Write("Enter ISBN or Title: ");
+                        Console.Write("Enter ISBN or Title or book Category: ");
                         string Input = Console.ReadLine();
 
                         //flag = false
@@ -118,7 +121,7 @@
 
                         for (int i = 0; i <= lastIndex; i++)
                         {
-                            if (titles[i] == Input || isbns[i] == Input)
+                            if (titles[i] == Input || isbns[i] == Input || bookCategory[i] == Input)
                             {
                                 //book is found in system
                                 Found = true;
@@ -156,14 +159,14 @@
                     case 3:
 
 
-                        Console.Write("Enter ISBN or Title: ");
+                        Console.Write("Enter ISBN or Title or book Category: ");
                         string input = Console.ReadLine();
 
                         bool found = false;
 
                         for (int i = 0; i <= lastIndex; i++)
                         {
-                            if (titles[i] == input || isbns[i] == input)
+                            if (titles[i] == input || isbns[i] == input || bookCategory[i] == input)
                             {
                                 //book is found in system
                                 found = true;
@@ -205,20 +208,20 @@
                     case 4:
 
 
-                        Console.Write("Enter ISBN or Title: ");
+                        Console.Write("Enter ISBN or Title or book Category: ");
                         string INPUT = Console.ReadLine();
 
                         bool FOUND = false;
 
                         for (int i = 0; i <= lastIndex; i++)
                         {
-                            if (titles[i] == INPUT || isbns[i] == INPUT)
+                            if (titles[i] == INPUT || isbns[i] == INPUT || bookCategory[i] == INPUT)
                             {
                                 //book is found in system
                                 FOUND = true;
 
 
-                                Console.WriteLine("Book title: " + titles[i] + ", Book Author:" + authors[i] + ", Book ISBN:" + isbns[i] + ", Book availability:" + available[i]);
+                                Console.WriteLine("Book title: " + titles[i] + ", Book Author:" + authors[i] + ", Book ISBN:" + isbns[i] + ", Book availability:" + available[i] + ", Book category: " + bookCategory[i] );
 
 
 
@@ -257,7 +260,7 @@
                         {
                             if (available[i] == true)
                             {
-                                Console.WriteLine("Title: " + titles[i] + " Author: " + authors[i] + " ISBN: " + isbns[i]);
+                                Console.WriteLine("Title: " + titles[i] + " Author: " + authors[i] + " ISBN: " + isbns[i] + "Category: " + bookCategory[i]);
                             }
                         }
 
