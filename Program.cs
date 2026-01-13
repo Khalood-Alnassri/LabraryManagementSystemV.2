@@ -9,6 +9,10 @@
             string[] isbns = new string[100];
             bool[] available = new bool[100];
             string[] borrowers = new string[100];
+            string[] bookCategory = new string[100];
+            string[] borrowCount = new string[100];
+            string[] returndate = new string[100];
+            double[] lateFees = new double[100];
 
             int lastIndex = 0; // Initialize lastIndex to -1 since no books are added yet
 
@@ -17,7 +21,8 @@
             isbns[lastIndex] = "111";
             available[lastIndex] = true;
             borrowers[lastIndex] = "";
-
+            bookCategory[lastIndex] = "Sciences";
+            borrowCount[lastIndex] = "3";
             lastIndex++; //1
 
             titles[lastIndex] = "Algorithms";
@@ -25,6 +30,8 @@
             isbns[lastIndex] = "222";
             available[lastIndex] = true;
             borrowers[lastIndex] = "";
+            bookCategory[lastIndex] = "Database";
+            borrowCount[lastIndex] = "6";
 
 
             lastIndex++; //2
@@ -34,6 +41,8 @@
             isbns[lastIndex] = "333";
             available[lastIndex] = false;
             borrowers[lastIndex] = "Karim";
+            bookCategory[lastIndex] = "Sciences";
+            borrowCount[lastIndex] = "2";
 
 
 
