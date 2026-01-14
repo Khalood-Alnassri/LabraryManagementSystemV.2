@@ -25,6 +25,7 @@ namespace LabraryManagementSystemV._2
             borrowers[lastIndex] = "";
             bookCategory[lastIndex] = "Sciences";
             borrowCount[lastIndex] = 3;
+
             lastIndex++; //1
 
             titles[lastIndex] = "Algorithms";
@@ -66,7 +67,8 @@ namespace LabraryManagementSystemV._2
                 Console.WriteLine("5. List All Available Books");
                 Console.WriteLine("6. Transfer Book");
                 Console.WriteLine("7. View Most Popular Books.");
-                Console.WriteLine("8. Exit");
+                Console.WriteLine("8. Search Books by Category");
+                Console.WriteLine("9. Exit");
                 Console.Write("Choose option: ");
 
 
@@ -172,7 +174,7 @@ namespace LabraryManagementSystemV._2
                                         lateFees[i] = lateDays * FeePerDay;
 
                                         Console.WriteLine("Late days: " + lateDays);
-                                        Console.WriteLine("Late fee: " + lateFees[i] + " OR");
+                                        Console.WriteLine("Late fee: " + lateFees[i] + " OMR");
 
                                     }
                                     else
@@ -212,7 +214,7 @@ namespace LabraryManagementSystemV._2
 
 
                     case 4:
-
+                        // Search Book
 
                         Console.Write("Enter ISBN or Title or book Category: ");
                         string INPUT = Console.ReadLine();
@@ -258,7 +260,8 @@ namespace LabraryManagementSystemV._2
 
 
 
-                    case 5: //print all availbel books
+                    case 5: 
+                        //print all availbel books
 
                         Console.WriteLine("Available Books:");
 
@@ -266,7 +269,7 @@ namespace LabraryManagementSystemV._2
                         {
                             if (available[i] == true)
                             {
-                                Console.WriteLine("Title: " + titles[i] + " Author: " + authors[i] + " ISBN: " + isbns[i] + "Category: " + bookCategory[i]);
+                                Console.WriteLine("Title: " + titles[i] + " ,Author: " + authors[i] + " ,ISBN: " + isbns[i] + " ,Category: " + bookCategory[i]);
                             }
                         }
 
@@ -275,7 +278,7 @@ namespace LabraryManagementSystemV._2
 
 
                     case 6:
-
+                        // Transfer Book
 
                         Console.Write("Enter first borrower name:");
                         string firstBorrower = Console.ReadLine();
@@ -364,10 +367,10 @@ namespace LabraryManagementSystemV._2
                             Console.WriteLine("Most populer book :");
                             Console.WriteLine("Tittle :" + titles[populerBookIndex]);
                             Console.WriteLine("ISBN :" + isbns[populerBookIndex]);
-                            Console.WriteLine("authors :" + authors[populerBookIndex]);
+                            Console.WriteLine("Authors :" + authors[populerBookIndex]);
                             Console.WriteLine("Category :" + bookCategory[populerBookIndex]);
                             Console.WriteLine("Availability :" + available[populerBookIndex]);
-                            Console.WriteLine("borrow Count :" + borrowCount[populerBookIndex]);
+                            Console.WriteLine("Borrow Count :" + borrowCount[populerBookIndex]);
 
                         }
                         else
@@ -379,8 +382,36 @@ namespace LabraryManagementSystemV._2
 
                         break;
 
+                        case 8:
+                        // Search Books by Category
 
-                    case 8:
+                        Console.WriteLine("Enter book category : ");
+                        string category = Console.ReadLine();
+
+                        bool book_found = false;
+                        for (int i = 0; i < lastIndex; i++)
+                        {
+                            if ((category == bookCategory[i])) 
+                            {
+
+                                book_found = true;
+
+                                string availabilityStatus = available[i] ? "Available" : "Borrowed";
+                                Console.WriteLine("Title: " + titles[i] + " ,Author: " + authors[i] + " ,ISBN: " + isbns[i] + " ,Category: " + bookCategory[i] + " ,BorrowCount: " + borrowCount[i] + " ,Status: " + availabilityStatus);
+
+                            }
+                        }
+                         
+                        if (book_found == false)
+                        {
+                            Console.WriteLine("No book found in this category.");
+                        }
+
+                        break;
+
+
+                    case 9:
+                        //Exit
 
                         Console.WriteLine("Exiting program...");
                         Console.WriteLine("-----------------------------");
