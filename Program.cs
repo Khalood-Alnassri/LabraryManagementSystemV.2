@@ -350,32 +350,48 @@ namespace LabraryManagementSystemV._2
 
                     case 7:
                         // View Most Popular Books
-                        
-                        int populerBook = 0;
-                        int populerBookIndex = 0;
-                        for (int i = 0; i <= lastIndex; i++)
-                        {
-                            if (populerBook < borrowCount[i])
-                            {
-                                
-                                populerBook = borrowCount[i];
-                                populerBookIndex = i;
-                            }
-                        }
-                        if ((populerBook != 0))
-                        {
-                            Console.WriteLine("Most populer book :");
-                            Console.WriteLine("Tittle :" + titles[populerBookIndex]);
-                            Console.WriteLine("ISBN :" + isbns[populerBookIndex]);
-                            Console.WriteLine("Authors :" + authors[populerBookIndex]);
-                            Console.WriteLine("Category :" + bookCategory[populerBookIndex]);
-                            Console.WriteLine("Availability :" + available[populerBookIndex]);
-                            Console.WriteLine("Borrow Count :" + borrowCount[populerBookIndex]);
 
-                        }
-                        else
+                        //int populerBook = 0;
+                        //int populerBookIndex = 0;
+                        //for (int i = 0; i <= lastIndex; i++)
+                        //{
+                        //    if (populerBook < borrowCount[i])
+                        //    {
+
+                        //        populerBook = borrowCount[i];
+                        //        populerBookIndex = i;
+                        //    }
+                        //}
+                        //if ((populerBook != 0))
+                        //{
+                        //    Console.WriteLine("Most populer book :");
+                        //    Console.WriteLine("Tittle :" + titles[populerBookIndex]);
+                        //    Console.WriteLine("ISBN :" + isbns[populerBookIndex]);
+                        //    Console.WriteLine("Authors :" + authors[populerBookIndex]);
+                        //    Console.WriteLine("Category :" + bookCategory[populerBookIndex]);
+                        //    Console.WriteLine("Availability :" + available[populerBookIndex]);
+                        //    Console.WriteLine("Borrow Count :" + borrowCount[populerBookIndex]);
+
+                        //}
+                        //else
+                        //{
+                        //    Console.WriteLine("No borrowed yet!");
+                        //}
+
+                        // Most populer book by borrow count in order
+
+                        Console.WriteLine("Most populer book by borrow count :");
+                      
+                        for (int count = 100; count >= 0; count--) //عداد تنازلي من الاكثر للاقل 
                         {
-                            Console.WriteLine("No borrowed yet!");
+                            for (int i = 0; i <= lastIndex; i++) 
+                            {
+                                if (borrowCount[i] == count) //ترتيب الكتب على حسب عدد مرات الاستعاره
+                                {
+                                    Console.WriteLine("Tittle :" + titles[i] + " ,ISBN :" + isbns[i] + " ,Authors :" + authors[i] + " ,Category :" + bookCategory[i] + " ,Availability :" + available[i] + " ,Borrow Count :" + borrowCount[i]);
+                                  
+                                }
+                            }
                         }
 
 
